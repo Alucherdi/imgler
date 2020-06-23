@@ -1,10 +1,10 @@
 const express = require("express")
 const app = module.exports = express()
 
-app.use(express.static('public'));
+app.use("/imgler/assets/", express.static('public'));
 
 app.use(require("./src/image/image.router"))
 
-app.listen(8080, () => {
-    console.log("Listening to 8080")
+app.listen(5432, () => {
+    console.log("Listening to 5432")
 })
