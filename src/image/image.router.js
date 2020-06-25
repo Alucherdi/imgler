@@ -9,7 +9,6 @@ var upload = multer({ dest: "public/" })
 
 app.post("/imgler/image/upload", upload.single("file"), (req, res, next) => {
     var response = {code: 2, msg: "File not detected"}
-
     var file = fs.readFileSync(req.file.path)
     var encoded = file.toString('base64')
     
@@ -29,8 +28,8 @@ app.post("/imgler/image/upload", upload.single("file"), (req, res, next) => {
 
         response.code = err ? 1 : 0
         response.msg  = err ? "Write error" : "Ok"
-        response.url  = err ? "" : `http://dev.playroomsck.com/${fileName}`
-        
+        response.url  = err ? "" : `http://dev.playroomsck.com:5432/imgler/assets/${fileName}`
+
         res.send(response)
     })
 })
