@@ -17,7 +17,6 @@ app.post("/imgler/image/upload", upload.single("file"), (req, res, next) => {
     //no file detected
     if (!file) {
         res.send(response)
-	return
     }
 
     var publicPath = path.join(__dirname, "../../public")
@@ -27,7 +26,7 @@ app.post("/imgler/image/upload", upload.single("file"), (req, res, next) => {
     if(override) {
         console.log("Removing old file")
         fs.unlink(req.file.path, ()=>{})
-    }
+cd     }
 
     fs.writeFile(`${publicPath}/${fileName}`, image, (err, writeResponse) => {
         //hash removing after saving (or not)
